@@ -1,6 +1,7 @@
 var insertGameAjax = function() {
-   $.get( "api.php?req=insertGame?title=testTitle", function( data ) {
-       var gameIdFromServer = $.parseJSON(data);
-       alert(gameIdFromServer);
+    alert('in');
+   $.get( "insertGame.php?title=vfvf", function( data ) {
+       //var gameIdFromServer = $.parseJSON(data);
+       //alert(data);
    }); 
 }
