@@ -1,6 +1,6 @@
 <?php
 	try{
-		$db = new PDO('mysql:host=localhost;dbname=ariel25_db', 'root', 'a17d2A17');
+		$db = new PDO('mysql:host=209.188.15.35;dbname=effeecom_Ariel25_DB', 'effeecom', 'eff23130');
 		
 		
 		$resultSet = $db->query('SELECT * FROM admins');
