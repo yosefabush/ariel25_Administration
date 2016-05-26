@@ -1,0 +1,110 @@
+#mainDiv{
+
+    margin: 50px auto;
+    text-align: center;
+    position: relative;
+    float: none;
+}
+
+.section{
+    margin-bottom: 10%;
+}
+
+ul{
+    display: inline-block;
+    list-style: none;
+}
+.btn_tab{
+    cursor: pointer;
+}
+#tab_image{
+    display: inline;
+}
+#tab_video{
+    display: none;
+}
+input[type="file"] {
+    display: block;
+    margin: auto;
+}
+
+.button{
+    position: relative;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+    font-family: Helvetica, Arial, sans-serif;
+    color: #2C3E50;
+    font-size: 13px;
+    background-color: white;
+    cursor: pointer;
+}
+input{
+    text-align: center;
+}
+
+textarea{
+    text-align: right;
+    width: auto;
+}
+
+#btn_delete_question{
+    background: red;
+    position: relative;
+    float: left;
+}
+
+.submit{
+    background: green;
+    position: relative;
+    float: right;
+}
+
+.nav_button{
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 50px;
+    width: auto;
+    box-sizing: border-box;
+    font-family: Helvetica, Arial, sans-serif;
+    color: #2C3E50;
+    font-size: 13px;
+    background-color: white;
+    cursor: pointer;
+
+
+}
+
+#btn_modal_ok{
+   float: left;
+
+}
+
+.game_name_div{
+    margin: 50px auto;
+    text-align: center;
+    position: relative;
+    float: none;
+}
+
+.btn_answer{
+    width: 30%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-left: 52px;
+    box-sizing: border-box;
+    font-family: Helvetica, Arial, sans-serif;
+    color: #2C3E50;
+    cursor: pointer;
+    background-color: red;
+}
+.correct_answer{
+    background-color: green;
+}
+.wrong_answer{
+    background-color: red;
+}

@@ -3,21 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <title>Create Game</title>
-    <link href="bootstrap.css" rel="stylesheet"/>
-    <link href="create_game_css.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href="css/create_game.css" rel="stylesheet"/>
     <link rel="stylesheet" href="youtube/upload_video.css">
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans' type='text/css'>
-
+    <!-- JQuery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!--Bootstrap-->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 <body>
 <div id="mainDiv" class="container">
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" data-backdrop="static" data-keyboard="false" role="dialog" >
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <h4 class="modal-title">שם המשחק</h4>
+                </div>
+                <div class="modal-body">
+                    <input id="game_title" type="text" placeholder="שם המשחק"><br>
+                </div>
+                <div class="modal-footer">
+                    <button id="btn_modal_ok" type="button" class="btn btn-default" >אישור</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
     <div class="row section">
-        <input id="game_name" type="text" placeholder="שם המשחק"><br>
+
     </div>
 
     <div class="row section">
         <div class="col-md-12">
-            <div id="question_number">שאלה מס' <span id="question_number_counter">1</span></div>
+            <div id="question_number">גוף השאלה</div>
             <textarea id="question_body" rows="4" cols="50" placeholder="הכנס שאלה"></textarea>
         </div>
     </div>
@@ -27,14 +51,12 @@
             <li id="btn_tab_image" class="active btn_tab"><a>תמונה</a></li>
             <li id="btn_tab_video" class="btn_tab"><a>וידאו</a></li>
         </ul>
-        <div id="tab_image" class="tab_content">
-            <form action="http://pimaster.orgfree.com/checkITin/Site/Upload.php" method="post"
-                  enctype="multipart/form-data">
-                בחר קובץ תמונה
-                <input type="file" name="fileToUpload" id="fileToUpload">
-            </form>
+        <br>
+        <div id="tab_image" class="tab_content row">
+            בחר קובץ תמונה
+            <input type="file" name="fileToUpload" id="fileToUpload">
         </div>
-        <div id="tab_video" class="tab_content">
+        <div id="tab_video" class="tab_content row">
                     <span id="signinButton" class="pre-sign-in">
                       <span
                               class="g-signin"
@@ -93,25 +115,25 @@
                 </div>
             </div>
         </div>
-
+    </div>
 
         <div class="row section">
             <ul>
                 <li class="col-md-3">
                     <input id="answer1" type="text" placeholder="הכנס תשובה"><br>
-                    <div data-index="1" class="btn_answer correct_answer" id="ans1"></div>
+                    <div data-index="1" class="btn_answer correct_answer" id="ans1">נכונה</div>
                 </li>
                 <li class="col-md-3">
                     <input id="answer2" type="text" placeholder="הכנס תשובה"><br>
-                    <div data-index="2" class="btn_answer" id="ans2"></div>
+                    <div data-index="2" class="btn_answer" id="ans2">לא נכונה</div>
                 </li>
                 <li class="col-md-3">
                     <input id="answer3" type="text" placeholder="הכנס תשובה"><br>
-                    <div data-index="3" class="btn_answer" id="ans3"></div>
+                    <div data-index="3" class="btn_answer" id="ans3">לא נכונה</div>
                 </li>
                 <li class="col-md-3">
                     <input id="answer4" type="text" placeholder="הכנס תשובה"><br>
-                    <div data-index="4" class="btn_answer" id="ans4"></div>
+                    <div data-index="4" class="btn_answer" id="ans4">לא נכונה</div>
                 </li>
             </ul>
         </div>
@@ -120,18 +142,16 @@
             <div id="btn_delete_question" class="button col-md-3">מחק שאלה</div>
             <div id="btn_save_game" class="button submit col-md-5">שמור שאלה</div>
         </div>
-    </div>
 
-    <!-- JQuery-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+</div>
 
-    <!-- Javascript -->
-    <script src="create_game_js.js"></script>
-    <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
-    <script src="youtube/jquery.min.js"></script>
-    <script src="youtube/plusone.js"></script>
-    <script src="youtube/cors_upload.js"></script>
-    <script src="youtube/upload_video.js"></script>
+<!-- Javascript -->
+<script src="js/create_game.js"></script>
+<script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+<script src="youtube/plusone.js"></script>
+<script src="youtube/cors_upload.js"></script>
+<script src="youtube/upload_video.js"></script>
+
 
 </body>
 </html>
