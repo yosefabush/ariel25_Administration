@@ -1,0 +1,33 @@
+#games{
+    margin: auto;
+}
+
+ul{
+    display: inline-block;
+    list-style: none;
+}
+li{
+    background-color: dimgrey;
+}
+
+select{
+    height: 45px;
+    background-color: aliceblue;
+}
+.button{
+    position: relative;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+    font-family: Helvetica, Arial, sans-serif;
+    color: #2C3E50;
+    font-size: 13px;
+    background-color: white;
+    cursor: pointer;
+    text-align: center;
+}
+.start{
+    background: green;
+    position: relative;
+}

@@ -1,5 +1,4 @@
 #mainDiv{
-
     margin: 50px auto;
     text-align: center;
     position: relative;
@@ -9,7 +8,10 @@
 .section{
     margin-bottom: 10%;
 }
-
+select{
+    height: 45px;
+    background-color: aliceblue;
+}
 ul{
     display: inline-block;
     list-style: none;

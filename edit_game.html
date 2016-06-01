@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>יצירת משחק</title>
+    <title>עריכת משחק</title>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link href="css/create_game.css" rel="stylesheet"/>
+    <link href="css/edit_game.css" rel="stylesheet"/>
     <link rel="stylesheet" href="youtube/upload_video.css">
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans' type='text/css'>
     <!-- JQuery-->
@@ -14,43 +14,25 @@
 </head>
 <body>
 <div id="mainDiv" class="container">
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" data-backdrop="static" data-keyboard="false" role="dialog" >
-        <div class="modal-dialog">
 
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">שם המשחק</h4>
-                </div>
-                <div class="modal-body">
-                    <input id="game_title" type="text" placeholder="שם המשחק"><br>
-                </div>
-                <div class="modal-footer">
-                    <button id="btn_modal_ok" type="button" class="btn btn-default" >אישור</button>
-                </div>
-            </div>
 
+    <div class="row section">
+        <div class="col-md-12">
+            <input id="game_title" type="text">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <select id="questions_list">
+
+            </select>
         </div>
     </div>
 
     <div class="row section">
         <div class="col-md-12">
-            <div id="game_title_label"></div>
-        </div>
-    </div>
-
-    <div class="row section">
-        <div class="col-md-12">
-           <ul id="questions_list">
-
-           </ul>
-        </div>
-    </div>
-
-    <div class="row section">
-        <div class="col-md-12">
-            <div id="question_number">גוף השאלה</div>
+            <div>גוף השאלה</div>
             <textarea id="question_body" rows="4" cols="50" placeholder="הכנס שאלה"></textarea>
         </div>
     </div>
@@ -155,7 +137,7 @@
 </div>
 
 <!-- Javascript -->
-<script src="js/create_game.js"></script>
+<script src="js/edit_game.js"></script>
 <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
 <script src="youtube/plusone.js"></script>
 <script src="youtube/cors_upload.js"></script>
