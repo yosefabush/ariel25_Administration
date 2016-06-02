@@ -6,9 +6,11 @@ var gameID;
 var gameTitle;
 var correctAnswer;
 var questions=[];
+var questionId;
 
 $(window).load(function() {
-    gameTitle = $.urlParam("title");
+    gameTitle = decodeURIComponent($.urlParam("title").replace("%20", " "));
+    console.log(gameTitle);
     getGame();
 });
 
@@ -23,6 +25,7 @@ $(".submit").click(function () {
     correctAnswer = $(".btn_answer.correct_answer").attr("data-index");
 
     question =  {
+        "questionId": questionId,
         "gameId": gameID, "bodyQuestion": $("#question_body").val(),
         "imagePath": imagePath, "videoUrl": videoUrl, "answers": $answers, "correctAnswer": correctAnswer
     };
@@ -51,7 +54,8 @@ $(".btn_answer").click(function(){
 });
 
 $("#questions_list").change(function() {
-    fillPage(questions[$("#questions_list").index()]);
+    
+    fillPage(questions[$("#questions_list")[0].selectedIndex]);
 });
 
 function getGame(){
@@ -59,10 +63,12 @@ function getGame(){
         type: "GET",
         data: { get_param: 'value', title: gameTitle  },
         dataType: 'json',
-        url: "http://arielexpert25.com/administration/php/getGame.php" ,
+        url: "php/getGame.php" ,
 
         success : function(data) {
             $.each(data, function(index, element) {
+                gameID = element.GameId;
+                
                 $('#questions_list').append($('<option value = '+ element.Id+'>' + element.Id + '</option>'));
                 $answers = [element.Answer1,element.Answer2,element.Answer3,element.Answer4];
                 questions.push({ "GameId": element.GameId, "Id":element.Id ,"bodyQuestion": element.Text,
@@ -88,6 +94,7 @@ function fillPage(question){
     correctAnswer = question.CorrectAnswer;
     $(".btn_answer").removeClass("correct_answer");
     $(".btn_answer").text("לא נכונה");
+    questionId = question.Id;
 
     var a = '*[data-index='+correctAnswer+']';
     $(a).addClass("correct_answer");
@@ -147,12 +154,13 @@ function setVideoUrl(videoID){
 }
 
 function uploadToDB(){
+    console.log(question);
     $.ajax({
         type: "POST",
         contentType: "application/x-www-form-urlencoded;charset=UTF-8",
-        url: "http://arielexpert25.com/administration/php/insertQuestion.php" ,
+        url: "php/updateQuestion.php" ,
 
-        data: { gameId: question.gameId, bodyQuestion: question.bodyQuestion, imagePath: question.imagePath,
+        data: { questionId: question.questionId,gameId: gameID, bodyQuestion: question.bodyQuestion, imagePath: question.imagePath,
             videoUrl: question.videoUrl, answer1: question.answers[0], answer2: question.answers[1],
             answer3: question.answers[2],answer4: question.answers[3],correctAnswer: question.correctAnswer},
         success : function(data) {

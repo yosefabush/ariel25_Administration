@@ -1,19 +1,23 @@
 var username;
 var password;
 
-$("#button").click(function(){
-	username = $("#username").val();
-		if($.isNumeric(username) == false){
-		alert("User Name worng!");
-		return;
-	}
-	password = $("#password").val();
-	if($.isNumeric(password) == false){
-		alert("Password worng!");
-		return;
-	}
-	login();
+$(document).ready(function() {
+    $("#button").click(function(){
+        username = $("#username").val();
+            if($.isNumeric(username) == false){
+            alert("User Name worng!");
+            return;
+        }
+        password = $("#password").val();
+        if($.isNumeric(password) == false){
+            alert("Password worng!");
+            return;
+        }
+        login();
+    });
+    
 });
+
 function login(){
 	$.ajax({
     type: "POST",
@@ -22,10 +26,9 @@ function login(){
 
     data: {"username":username, "password":password},
     success : function(data) {
-		alert(data); 
+		// alert(data); 
 		if(data > 0){
-		var win=window.open("http://arielexpert25.com/administration/manage_games.html","_blank");
-		win.focus();
+            window.location = "manage_games.html";
 		}
 		else{
 			alert("username/password worng!");

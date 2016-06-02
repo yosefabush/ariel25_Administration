@@ -1,17 +1,44 @@
+<!DOCTYPE html>
 <html>
-    <head>
-      
-    </head>
-    
-    <body>
-        <form>
-            <input id="user" type="text">
-            <input id="pass" type="text">
-            <input type="button" value="test" onclick="updateQuestionAjax()">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/admin_login.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="js/admin_login.js"></script>
+    <title>התחברות מנהל</title>
+</head>
+<body>
+<header id="headerTop">
+    <div class="container-fluid">
+        <h1 id="topTxt">התחברות מנהל:</h1>
+    </div>
+</header>
+<div id="centerBox" class="First container-fluid">
+    <div class="main">
+        <form class="formStyle">
+            <span class="centerBoxTxt">שם משתמש:</span><br>
+            <input id="username" type="text" placeholder="שם משתמש"><br>
+            <span class="centerBoxTxt">סיסמה:</span><br>
+            <input id="password" type="password" placeholder="סיסמה"><br><br>
+            <input id="button" class="centerBoxTxt" type="button" value="התחברות">
         </form>
-        
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-        <script src="test.js"></script>
-        
-    </body>
+    </div>
+</div>
+
+
+<footer class="col-md-12 bottom">
+    <div class="container-fluid">
+        <div class="row col-md-12">
+            <img src="css/images/BottomLogo.png" class="float-left">
+            <img src="css/images/ProjectLogo.png" class="float-right">
+            <div class="arrow-right container-fluid col-md-1 hide">
+            </div>
+        </div>
+
+    </div>
+</footer>
+</body>
 </html>
+

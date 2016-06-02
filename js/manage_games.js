@@ -1,6 +1,6 @@
-var newGameUrl = "http://arielexpert25.com/administration/create_game.html";
-var editGameUrl = "http://arielexpert25.com/administration/edit_game.html?title=";
-var startGameUrl = "http://arielexpert25.com/administration/start_game.html";
+var newGameUrl = "create_game.html";
+var editGameUrl = "edit_game.html?title=";
+var startGameUrl = "start_game.html";
 var selectedGameTitle;
 $(window).load(function() {
     getAllGames();
@@ -18,8 +18,13 @@ $("#btn_delete").click(function (){
 
 $("#btn_edit").click(function (){
     selectedGameTitle = $("#games_list").val();
+    
+    var newUrl = editGameUrl+selectedGameTitle;
+    window.location = newUrl;
+/*    
     var win = window.open((editGameUrl+selectedGameTitle).replace(/ /g, "%20"), '_blank');
     win.focus();
+    */
 });
 
 $("#btn_start").click(function (){
@@ -38,7 +43,7 @@ function getAllGames(){
        /*data: { title: $("#game_title").val()},*/
         success : function(data) {
             $.each(data, function(index, element) {
-                $('#games_list').append($('<option value = '+ element.Title+'>' + element.Title + '</option>'));
+                $('#games_list').append($('<option value = '+ element.Title.replace(/ /g, "%20")+'>' + element.Title + '</option>'));
             });
 
         },
