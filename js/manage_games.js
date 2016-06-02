@@ -1,7 +1,8 @@
 var newGameUrl = "create_game.html";
 var editGameUrl = "edit_game.html?title=";
-var startGameUrl = "start_game.html";
+var startGameUrl = "../../ariel25_Game/ariel25_Game/Hackaton/waitToPeople.html";
 var selectedGameTitle;
+var games;
 $(window).load(function() {
     getAllGames();
 });
@@ -28,6 +29,7 @@ $("#btn_edit").click(function (){
 });
 
 $("#btn_start").click(function (){
+    localStorage.gameId =games[$("#games_list")[0].selectedIndex].Id; 
     var win = window.open(startGameUrl, '_self');
     win.focus();
 });
@@ -38,10 +40,11 @@ function getAllGames(){
         type: "GET",
         data: { get_param: 'value' },
         dataType: 'json',
-        url: "http://arielexpert25.com/administration/php/getAllGames.php" ,
+        url: "php/getAllGames.php" ,
 
        /*data: { title: $("#game_title").val()},*/
         success : function(data) {
+            games = data;
             $.each(data, function(index, element) {
                 $('#games_list').append($('<option value = '+ element.Title.replace(/ /g, "%20")+'>' + element.Title + '</option>'));
             });
