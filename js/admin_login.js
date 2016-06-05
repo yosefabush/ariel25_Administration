@@ -22,7 +22,7 @@ function login(){
 	$.ajax({
     type: "POST",
     contentType: "application/x-www-form-urlencoded;charset=UTF-8",
-    url: "http://arielexpert25.com/administration/php/adminLogin.php" ,
+    url: "php/adminLogin.php" ,
 
     data: {"username":username, "password":password},
     success : function(data) {

@@ -14,7 +14,7 @@ $("#btn_modal_ok").click(function(){
     $.ajax({
         type: "POST",
         contentType: "application/x-www-form-urlencoded;charset=UTF-8",
-        url: "http://arielexpert25.com/administration/php/insertGame.php" ,
+        url: "php/insertGame.php" ,
 
         data: { title: $("#game_title").val()},
         success : function(data) {
@@ -74,7 +74,7 @@ function getGame(){
         type: "GET",
         data: { get_param: 'value', title: $("#game_title").val()  },
         dataType: 'json',
-        url: "http://arielexpert25.com/administration/php/getGame.php" ,
+        url: "php/getGame.php" ,
 
         success : function(data) {
             $.each(data, function(index, element) {
@@ -97,7 +97,7 @@ function uploadImage(){
     form_data.append('file', file_data);
     alert(form_data);
     $.ajax({
-        url: 'http:arielexpert25.com/administration/php/uploadImage.php', // point to server-side PHP script
+        url: 'php/uploadImage.php', // point to server-side PHP script
         dataType: 'text',  // what to expect back from the PHP script, if anything
         cache: false,
         contentType: false,
@@ -126,7 +126,7 @@ function uploadToDB(){
     $.ajax({
         type: "POST",
         contentType: "application/x-www-form-urlencoded;charset=UTF-8",
-        url: "http://arielexpert25.com/administration/php/insertQuestion.php" ,
+        url: "php/insertQuestion.php" ,
 
         data: { gameId: currentQuestion.gameId, bodyQuestion: currentQuestion.bodyQuestion, imagePath: currentQuestion.imagePath,
             videoUrl: currentQuestion.videoUrl, answer1: currentQuestion.answers[0], answer2: currentQuestion.answers[1],

@@ -128,7 +128,7 @@ function uploadImage(){
     form_data.append('file', file_data);
     alert(form_data);
     $.ajax({
-        url: 'http:arielexpert25.com/administration/php/uploadImage.php', // point to server-side PHP script
+        url: 'php/uploadImage.php', // point to server-side PHP script
         dataType: 'text',  // what to expect back from the PHP script, if anything
         cache: false,
         contentType: false,

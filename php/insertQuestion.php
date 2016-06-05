@@ -1,10 +1,11 @@
 <?php
+header("Access-Control-Allow-Origin: *");
 /*
 
 */
     try{
         require_once ('db.php');	
-            $bodyQuestion = $_POST['text'];
+            $bodyQuestion = $_POST['bodyQuestion'];
             $id = $_POST['gameId'];
             $imagePath = $_POST['imagePath'];
             $videoUrl = $_POST['videoUrl'];
@@ -15,7 +16,7 @@
             $correctAnswer = $_POST['correctAnswer'];
             
             $insert  = $db->exec("INSERT INTO questions (Number,GameId,Text,ImagePath,VideoUrl,Answer1,Answer2,Answer3,Answer4,CorrectAnswer) 
-                VALUES (1,$id,'$text','$imagePath','$videoUrl','$answer1','$answer2','$answer3','$answer4',$correctAnswer)");
+                VALUES (1,$id,'$bodyQuestion','$imagePath','$videoUrl','$answer1','$answer2','$answer3','$answer4',$correctAnswer)");
             if( $insert !== FALSE ) {
                 echo 1;
             } else {
