@@ -47,7 +47,7 @@ $(".submit").click(function () {
     };
 
     if($('#fileToUpload').prop('files').length > 0) {
-        uploadImage();
+        uploadToDBWithImage();
     }else{
         uploadToDB();
     }
@@ -97,30 +97,26 @@ function getGame(){
     });
 }
 
-function uploadImage(){
+function uploadToDBWithImage(){
     var file_data = $('#fileToUpload').prop('files')[0];
     var form_data = new FormData();
     form_data.append('file', file_data);
- //   alert(form_data);
     $.ajax({
-        url: 'php/uploadImage.php', // point to server-side PHP script
+        type: "POST",
         dataType: 'text',  // what to expect back from the PHP script, if anything
         cache: false,
-        contentType: false,
+        contentType: "application/x-www-form-urlencoded;charset=UTF-8",
         processData: false,
-        data: form_data,
-        type: 'post',
-        success: function(php_script_response){
-           // alert(php_script_response); // display response from the PHP script, if any
-            imagePath = "";
-            currentQuestion =  {
-                "gameId": gameID, "bodyQuestion": $("#question_body").val(),
-                "imagePath": imagePath, "videoUrl": videoUrl, "answers": $answers, "correctAnswer": correctAnswer
-            };
+        url: "php/insertQuestion.php" ,
 
-            uploadToDB(currentQuestion);
+        data: { gameId: currentQuestion.gameId, bodyQuestion: currentQuestion.bodyQuestion, imagePath: currentQuestion.imagePath,
+            videoUrl: currentQuestion.videoUrl, answer1: currentQuestion.answers[0], answer2: currentQuestion.answers[1],
+            answer3: currentQuestion.answers[2],answer4: currentQuestion.answers[3],correctAnswer: currentQuestion.correctAnswer, image: form_data},
+        success : function(data) {
+            clearPage();
         }
     });
+
 }
 
 function setVideoUrl(videoID){
@@ -163,11 +159,18 @@ function clearPage(){
     $(a).addClass("correct_answer");
     $(a).text("נכונה");
 
+    resetFormElement($('#fileToUpload')); //clear the image file selection
+
     $("html, body").animate({ scrollTop: 0 }, "slow");
 
     alert("שאלה נשמרה");
 
 
+}
+
+function resetFormElement(e) {
+    e.wrap('<form>').closest('form').get(0).reset();
+    e.unwrap();
 }
 
 function toggleUploadMediaView() {

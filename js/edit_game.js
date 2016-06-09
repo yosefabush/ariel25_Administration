@@ -37,7 +37,7 @@ $(".submit").click(function () {
     };
 
     if($('#fileToUpload').prop('files'),length > 0) {
-        uploadImage();
+        uploadToDBWithImage();
     }else{
         uploadToDB();
     }
@@ -125,37 +125,38 @@ function clearPage(){
     $(a).addClass("correct_answer");
     $(a).text("נכונה");
 
+    resetFormElement($('#fileToUpload')); //clear the image file selection
+
     $("html, body").animate({ scrollTop: 0 }, "slow");
 
     alert("שאלה נשמרה");
 }
 
+function resetFormElement(e) {
+    e.wrap('<form>').closest('form').get(0).reset();
+    e.unwrap();
+}
 
-function uploadImage(){
+function uploadToDBWithImage(){
     var file_data = $('#fileToUpload').prop('files')[0];
     var form_data = new FormData();
     form_data.append('file', file_data);
-    //alert(form_data);
     $.ajax({
-        url: 'php/uploadImage.php', // point to server-side PHP script
+        type: "POST",
         dataType: 'text',  // what to expect back from the PHP script, if anything
-        cache: false,
-        contentType: false,
+        contentType: "application/x-www-form-urlencoded;charset=UTF-8",
         processData: false,
-        data: form_data,
-        type: 'post',
-        success: function(php_script_response){
-           // alert(php_script_response); // display response from the PHP script, if any
-            imagePath = "";
-            question =  {
-        			  "questionId": questionId,
-        			  "gameId": gameID, "bodyQuestion": $("#question_body").val(),
-       			  "imagePath": imagePath, "videoUrl": videoUrl, "answers": $answers, "correctAnswer": correctAnswer
- 			   };
+        cache: false,
+        url: "php/updateQuestion.php" ,
 
-            uploadToDB(question);
+        data: { questionId: question.questionId,gameId: gameID, bodyQuestion: question.bodyQuestion, imagePath: question.imagePath,
+            videoUrl: question.videoUrl, answer1: question.answers[0], answer2: question.answers[1],
+            answer3: question.answers[2],answer4: question.answers[3],correctAnswer: question.correctAnswer, image: form_data},
+        success : function(data) {
+            clearPage();
         }
     });
+
 }
 
 function setVideoUrl(videoID){
@@ -174,7 +175,7 @@ function uploadToDB(){
             videoUrl: question.videoUrl, answer1: question.answers[0], answer2: question.answers[1],
             answer3: question.answers[2],answer4: question.answers[3],correctAnswer: question.correctAnswer},
         success : function(data) {
-            alert(data);
+          //  alert(data);
             clearPage();
         }
     });
