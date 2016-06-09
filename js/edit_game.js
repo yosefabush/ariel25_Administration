@@ -36,7 +36,7 @@ $(".submit").click(function () {
         "imagePath": imagePath, "videoUrl": videoUrl, "answers": $answers, "correctAnswer": correctAnswer
     };
 
-    if( ! $('#fileToUpload').prop('files')) {
+    if($('#fileToUpload').prop('files'),length > 0) {
         uploadImage();
     }else{
         uploadToDB();
@@ -135,7 +135,7 @@ function uploadImage(){
     var file_data = $('#fileToUpload').prop('files')[0];
     var form_data = new FormData();
     form_data.append('file', file_data);
-    alert(form_data);
+    //alert(form_data);
     $.ajax({
         url: 'php/uploadImage.php', // point to server-side PHP script
         dataType: 'text',  // what to expect back from the PHP script, if anything
@@ -148,9 +148,10 @@ function uploadImage(){
            // alert(php_script_response); // display response from the PHP script, if any
             imagePath = "";
             question =  {
-                "gameId": gameID, "bodyQuestion": $("#question_body").val(),
-                "imagePath": imagePath, "videoUrl": videoUrl, "answers": $answers, "correctAnswer": correctAnswer
-            };
+        			  "questionId": questionId,
+        			  "gameId": gameID, "bodyQuestion": $("#question_body").val(),
+       			  "imagePath": imagePath, "videoUrl": videoUrl, "answers": $answers, "correctAnswer": correctAnswer
+ 			   };
 
             uploadToDB(question);
         }
