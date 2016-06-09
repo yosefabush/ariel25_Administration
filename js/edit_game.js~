@@ -45,7 +45,7 @@ $(".submit").click(function () {
     //    + currentQuestion.correct_answer);
 });
 
-$("#btn_tab").click(function () {
+$(".btn_tab").click(function () {
 
     toggleUploadMediaView();
 

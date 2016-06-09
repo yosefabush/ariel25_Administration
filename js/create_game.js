@@ -55,6 +55,12 @@ $(".submit").click(function () {
     //    + currentQuestion.correct_answer);
 });
 
+$("#btn_back").click(function () {
+
+    window.location = "manage_games.html";
+
+});
+
 $(".btn_tab").click(function () {
 
     toggleUploadMediaView();
@@ -144,7 +150,7 @@ function clearPage(){
     hasVideo = false;
     correctAnswer = 1;
 
-    $("#question_body").text("");
+    $("#question_body").val("");
     $("#answer1").val("");
     $("#answer2").val("");
     $("#answer3").val("");
@@ -156,6 +162,10 @@ function clearPage(){
     var a = '*[data-index='+correctAnswer+']';
     $(a).addClass("correct_answer");
     $(a).text("נכונה");
+
+    $("html, body").animate({ scrollTop: 0 }, "slow");
+
+    alert("שאלה נשמרה");
 
 
 }
