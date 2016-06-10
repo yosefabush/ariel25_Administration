@@ -9,8 +9,7 @@ $(window).load(function() {
 
 
 $("#btn_add").click(function (){
-    var win = window.open(newGameUrl, '_blank');
-    win.focus();
+    window.location = newGameUrl;
 });
 
 $("#btn_delete").click(function (){
@@ -29,9 +28,8 @@ $("#btn_edit").click(function (){
 });
 
 $("#btn_start").click(function (){
-    localStorage.gameId =games[$("#games_list")[0].selectedIndex].Id; 
-    var win = window.open(startGameUrl, '_self');
-    win.focus();
+    localStorage.gameId =games[$("#games_list")[0].selectedIndex].Id;
+    window.location = startGameUrl;
 });
 
 

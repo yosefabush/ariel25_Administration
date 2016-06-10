@@ -19,10 +19,24 @@ $.urlParam = function(name){
     return results[1] || 0;
 };
 
-$(".btn_back").click(function () {
+$("#btn_back").click(function () {
+    var manageGamesUrl = "manage_games.html";
+    window.location =  manageGamesUrl;
 
-    window.location = "manage_games.html";
+});
 
+$("#btn_delete_question").click(function(){
+    $.ajax({
+        type: "POST",
+        contentType: "application/x-www-form-urlencoded;charset=UTF-8",
+        url: "php/deleteQuestion.php" ,
+        data: { questionId: question.questionId},
+        success : function(data) {
+            //  alert(data);
+            clearPage();
+            alert("שאלה נמחקה");
+        }
+    });
 });
 
 $(".submit").click(function () {
@@ -91,7 +105,7 @@ function getGame(){
 }
 
 function fillPage(question){
-    $("#game_title").text(gameTitle);
+    $("#game_title").val(gameTitle);
     $("#question_body").text(question.bodyQuestion);
     $("#answer1").val(question.answers[0]);
     $("#answer2").val(question.answers[1]);
@@ -106,6 +120,7 @@ function fillPage(question){
     $(a).addClass("correct_answer");
     $(a).text("נכונה");
 }
+
 function clearPage(){
     imagePath = "";
     videoUrl = "";
@@ -129,7 +144,7 @@ function clearPage(){
 
     $("html, body").animate({ scrollTop: 0 }, "slow");
 
-    alert("שאלה נשמרה");
+
 }
 
 function resetFormElement(e) {
@@ -154,6 +169,7 @@ function uploadToDBWithImage(){
             answer3: question.answers[2],answer4: question.answers[3],correctAnswer: question.correctAnswer, image: form_data},
         success : function(data) {
             clearPage();
+            alert("שאלה נשמרה");
         }
     });
 
@@ -177,6 +193,7 @@ function uploadToDB(){
         success : function(data) {
           //  alert(data);
             clearPage();
+            alert("שאלה נשמרה");
         }
     });
 }
@@ -191,7 +208,6 @@ function toggleUploadMediaView() {
     } else {
         $("#tab_image").css("display", "none");
         $("#tab_video").css("display", "inline");
-
 
         $("#btn_tab_video").addClass("active");
         $("#btn_tab_image").removeClass("active");
