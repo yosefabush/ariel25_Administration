@@ -1,6 +1,6 @@
 var newGameUrl = "create_game.html";
 var editGameUrl = "edit_game.html?title=";
-var startGameUrl = "../../ariel25_Game/ariel25_Game/Hackaton/waitToPeople.html";
+var startGameUrl = "../../ariel25_Game/Hackaton/waitToPeople.html";
 var selectedGameTitle;
 var games;
 $(window).load(function() {
