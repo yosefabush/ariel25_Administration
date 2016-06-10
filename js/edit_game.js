@@ -30,10 +30,12 @@ $("#btn_delete_question").click(function(){
         type: "POST",
         contentType: "application/x-www-form-urlencoded;charset=UTF-8",
         url: "php/deleteQuestion.php" ,
-        data: { questionId: question.questionId},
+        data: { questionId: questionId},
         success : function(data) {
             //  alert(data);
             clearPage();
+            $('#questions_list').empty();
+            getGame();
             alert("שאלה נמחקה");
         }
     });
@@ -74,7 +76,6 @@ $(".btn_answer").click(function(){
 });
 
 $("#questions_list").change(function() {
-    
     fillPage(questions[$("#questions_list")[0].selectedIndex]);
 });
 
@@ -91,7 +92,7 @@ function getGame(){
                 
                 $('#questions_list').append($('<option value = '+ element.Id+'>' + element.Id + '</option>'));
                 $answers = [element.Answer1,element.Answer2,element.Answer3,element.Answer4];
-                questions.push({ "GameId": element.GameId, "Id":element.Id ,"bodyQuestion": element.Text,
+                questions.push({"GameId": element.GameId, "Id":element.Id ,"bodyQuestion": element.Text,
                     "ImagePath": element.ImagePath, "VideoUrl": element.VideoUrl, "answers": $answers, "CorrectAnswer": element.CorrectAnswer});
             })
 

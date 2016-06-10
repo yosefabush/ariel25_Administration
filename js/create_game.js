@@ -114,6 +114,7 @@ function uploadToDBWithImage(){
             answer3: currentQuestion.answers[2],answer4: currentQuestion.answers[3],correctAnswer: currentQuestion.correctAnswer, image: form_data},
         success : function(data) {
             clearPage();
+	    alert(data);
         }
     });
 
@@ -134,7 +135,7 @@ function uploadToDB(){
             videoUrl: currentQuestion.videoUrl, answer1: currentQuestion.answers[0], answer2: currentQuestion.answers[1],
             answer3: currentQuestion.answers[2],answer4: currentQuestion.answers[3],correctAnswer: currentQuestion.correctAnswer},
         success : function(data) {
-           // alert(data);
+            alert(data);
             clearPage();
         }
     });
