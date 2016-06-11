@@ -22,6 +22,7 @@ $.urlParam = function(name){
 $("#btn_back").click(function () {
     var manageGamesUrl = "manage_games.html";
     window.location =  manageGamesUrl;
+    location.reload();
 
 });
 
@@ -179,7 +180,7 @@ function uploadToDBWithImage(){
         success : function(data) {
             clearPage();
             alert("שאלה נשמרה");
-            location.reload();
+            location.reload(); //
         }
     });
 

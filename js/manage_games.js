@@ -1,5 +1,7 @@
 var newGameUrl = "create_game.html";
 var editGameUrl = "edit_game.html?title=";
+
+// WHY DO YOU REFERENCE TO GAME? THIS IS FOR THE USERS!!! NOT FOR THE ADMINISTRATORS!
 var startGameUrl = "../../ariel25_Game/Hackaton/waitToPeople.html";
 var selectedGameTitle;
 var games;
