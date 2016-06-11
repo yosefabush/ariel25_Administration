@@ -6,7 +6,8 @@ This file returns to the manage system json list with the title of all the exist
     try{
         require_once ('db.php');	
         
-        $res = $db->query("SELECT Title FROM games")->fetchAll(PDO::FETCH_ASSOC);
+        /* Asaf: you need the id.... */
+        $res = $db->query("SELECT Id, Title FROM games")->fetchAll(PDO::FETCH_ASSOC);
        
         echo json_encode($res);  
         
