@@ -179,6 +179,7 @@ function uploadToDBWithImage(){
         success : function(data) {
             clearPage();
             alert("שאלה נשמרה");
+            location.reload();
         }
     });
 
@@ -203,6 +204,7 @@ function uploadToDB(){
           //  alert(data);
             clearPage();
             alert("שאלה נשמרה");
+            location.reload();
         }
     });
 }
