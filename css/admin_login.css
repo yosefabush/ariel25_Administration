@@ -1,9 +1,12 @@
-body{
-    margin: 0px;
-    padding: 0px;
+html{
+    height: 100%;
     background-image: url("../css/images/backImage.png");
     background-size: 100%;
     background-repeat: repeat-y,repeat-x;
+}
+body{
+    margin: 0px;
+    padding: 0px;
     direction: rtl;
 }
 .hide{
@@ -133,6 +136,7 @@ footer{
     bottom: 0px;
     border-top: 5px solid;
     position: fixed;
+    width: 100%;
 }
 footer>div>div>.col-md-3{
     padding-left: 0px;
