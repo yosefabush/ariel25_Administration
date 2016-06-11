@@ -8,7 +8,7 @@ var correctAnswer;
 var questions=[];
 var questionId;
 
-$(window).load(function() {
+$( document ).ready(function() {
     gameTitle = decodeURIComponent($.urlParam("title").replace("%20", " "));
     console.log(gameTitle);
     getGame();
@@ -26,6 +26,13 @@ $("#btn_back").click(function () {
 });
 
 $("#btn_delete_question").click(function(){
+    
+    //Asaf: make sure the user wishes for the action
+    result = confirm("האם אתה בטוח?");
+    if(result == false){
+        return;
+    }
+    
     $.ajax({
         type: "POST",
         contentType: "application/x-www-form-urlencoded;charset=UTF-8",
@@ -51,8 +58,9 @@ $(".submit").click(function () {
         "gameId": gameID, "bodyQuestion": $("#question_body").val(),
         "imagePath": imagePath, "videoUrl": videoUrl, "answers": $answers, "correctAnswer": correctAnswer
     };
-
-    if($('#fileToUpload').prop('files'),length > 0) {
+    
+    // Asaf: replaced ',' with '.' for length function...
+    if($('#fileToUpload').prop('files').length > 0) {
         uploadToDBWithImage();
     }else{
         uploadToDB();
