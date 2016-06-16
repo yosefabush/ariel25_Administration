@@ -29,6 +29,16 @@ $("#btn_edit").click(function (){
 
 $("#btn_start").click(function (){
     localStorage.gameId =games[$("#games_list")[0].selectedIndex].Id;
+    $.ajax({
+        type: "POST",
+        contentType: "application/x-www-form-urlencoded;charset=UTF-8",
+        url: "php/setStatus.php" ,
+
+        data: {"status":2,"gameId":localStorage.gameId},
+        success : function(data) {
+
+        }
+    });
     window.location = startGameUrl;
 });
 
