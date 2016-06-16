@@ -1,13 +1,9 @@
 var newGameUrl = "create_game.html";
 var editGameUrl = "edit_game.html?title=";
-
-// WHY DO YOU REFERENCE TO GAME? THIS IS FOR THE USERS!!! NOT FOR THE ADMINISTRATORS!
-var startGameUrl = "../../ariel25_Game/Hackaton/waitToPeople.html";
+var startGameUrl = "../ariel25_Game/Hackaton/waitToPeople.html";
 var selectedGameTitle;
 var games;
-
-// Asaf: don't use window, use document, can cause problems
-$( document ).ready(function() {
+$(window).load(function() {
     getAllGames();
 });
 
@@ -16,31 +12,8 @@ $("#btn_add").click(function (){
     window.location = newGameUrl;
 });
 
-// Asaf: it's important, why didn't you include it in the bugs list?
 $("#btn_delete").click(function (){
-    gameID = games[$("#games_list")[0].selectedIndex].Id;
-    
-    //must ask the user for confirmation
-    result = confirm("האם אתה בטוח שאתה רוצה למחוק את משחק מספר: " + gameID);
-    
-    if(result == true){
-        $.ajax({
-            type: "POST",
-            dataType: 'text', 
-            url: "deleteGame.php" ,
-            data: {gameID},
-            success : function(data) {
-                if(data == 1){
-                    alert("משחק מספר " + gameID + " נמחק" ); // alert the user and reload the page
-                    location.reload();
-                }
-                else{
-                    alert("שגיאה, נא להעביר את ההודעה הבאה לאחראים" );
-                    alert("\n" + data);
-                }
-            }
-        });
-    }
+
 });
 
 $("#btn_edit").click(function (){
@@ -71,7 +44,7 @@ function getAllGames(){
         success : function(data) {
             games = data;
             $.each(data, function(index, element) {
-                $('#games_list').append($('<option value = ' + element.Title.replace(/ /g, "%20")+'>' + element.Id + ' - ' +  element.Title + '</option>'));
+                $('#games_list').append($('<option value = '+ element.Title.replace(/ /g, "%20")+'>' + element.Title + '</option>'));
             });
 
         },

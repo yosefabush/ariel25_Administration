@@ -31,7 +31,7 @@ function login(){
             window.location = "manage_games.html";
 		}
 		else{
-			alert("username/password worng!");
+			alert(data/*"username/password worng!"*/);
 		}
     }
 });
