@@ -5,12 +5,18 @@ This file gets game title from the manage system and returns the questions of th
 */
     try{
         
-        $title = $_GET['title'];
-        require_once ('db.php');	
         
-        $res = $db->query("SELECT Id FROM games WHERE Title = '$title'")->fetch();
+        require_once ('db.php');	
+        if (isset($_GET['req']) && $_GET['req'] == "getQuestions" && isset($_GET['gameId'])) {
+			$id = $_GET['gameId'];
+		} else {
+			$title = $_GET['title'];
+			$res = $db->query("SELECT Id FROM games WHERE Title = '$title'")->fetch();
                 //echo(json_encode($res));
                 $id = $res['Id'];
+		}
+		
+        
                 //echo $id;
                 $res = $db->query("SELECT * FROM questions WHERE GameId = $id")->fetchAll(PDO::FETCH_ASSOC);
                 echo json_encode($res);   
