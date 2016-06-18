@@ -65,3 +65,9 @@ function getAllGames(){
         }
     });
 }
+
+// export all present (those who arrived) students to csv (excel format) (download it)
+$("#btn_export").click(function (e){
+    e.preventDefault(); //prevent default beaviour
+    window.location.href="downloadcsv.php";
+});
