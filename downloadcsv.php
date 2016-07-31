@@ -19,7 +19,7 @@ try{
     require_once ('db.php');
 
     //create the query to be inserted into the csv file
-    $query = ('SELECT CONCAT(LastName, " ",  FirstName) as FullName, UserId, NickName, WorkPlace, Position, IF(Arrived=1, "כן", "") AS YesNo FROM users');
+    $query = ('SELECT IFNULL( (CONCAT(LastName, " ",  FirstName)), (FirstName) ) as FullName, UserId, NickName, WorkPlace, Position, IF(Arrived=1, "כן", "") AS YesNo FROM users');
     
     // get the data
     $result = $db->prepare($query);
